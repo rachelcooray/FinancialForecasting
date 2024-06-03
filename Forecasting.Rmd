@@ -209,6 +209,14 @@ legend("topleft", legend = c("Desired Output", "Predicted Output"),
 
 In this project, a Multilayer Perceptron (MLP) model  was successfully developed to predict future EUR/USD exchange rates using historical data. The model's performance was evaluated using several statistical indices, and visualizations were created to compare the predicted and actual values.
 
+# References
+
+Chowdhury. M. S. et al. (2024). Deep Learning Models for Stock Market Forecasting: A Comprehensive Comparative Analysis. 10.32996/jbms.2024.6.2.9 
+
+Nagadia. M. (2022). Currency Rate Euro€ to USD$ (2003-2022). https://www.kaggle.com/datasets/meetnagadia/currency-rate-euro-to-usd 
+
+Tang. P and Zhang. W. (2024). PDMLP: Patch-based Decomposed MLP for Long-Term Time Series Forecasting. https://www.researchgate.net/publication/380821515_PDMLP_Patch-based_Decomposed_MLP_for_Long-Term_Time_Series_Forecastin
+
 # Appendix
 
 ## Complete code
