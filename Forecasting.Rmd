@@ -36,18 +36,27 @@ library(dplyr)
 
 # Introduction
 
-This project aims to predict future exchange rates of EUR/USD using historical data. The key steps include data cleaning, feature engineering, model training, and evaluation. A Multilayer Perceptron (MLP) model is used for this purpose, with the neuralnet package in R. The motivation behind this project is to assist financial analysts and investors in making informed decisions based on accurate exchange rate predictions.
+This project’s aim is to predict future exchange rates of Euro to US Dollar (EUR/USD) using historical exchange rate data. The key steps in this project include data cleaning, feature engineering, model training, and evaluation. A Multilayer Perceptron (MLP) model is used for this purpose, with the `neuralnet` package in R. This project would be able to assist financial analysts and investors in making informed decisions based on accurate exchange rate predictions.
 
 # Data loading and preprocessing
 
 # Loading and Cleaning Data
 
-The historical data of EUR/USD exchange rates is loaded from a CSV file downloaded from Kaggle.com. This data includes various features, with the closing exchange rate being the primary variable of interest. The data is then cleaned by converting the exchange rates to numeric values and removing any missing or invalid entries. This ensures that the dataset is ready for analysis and modeling.
+The historical data of EUR/USD exchange rates is loaded from a CSV file downloaded from a dataset from Kaggle.com. 
+
+This data includes various features, with the closing exchange rate being the primary variable of interest. The data is then cleaned by converting the exchange rates to numeric values and removing any missing or invalid entries. This ensures that the dataset is ready for analysis and modeling.
+
+# Exploratory Data Analysis
+
+The plots below show the variation of the exchange rate data.
+
+The boxplot shows that there are no outliers in the dataset under the closing rate column.
 
 # Feature Engineering
 
-To enhance the predictive power of the model, feature engineering is performed. This involves creating lagged versions of the exchange rate data, which serve as input features for the model. Specifically, exchange rates from previous days (lags) are used to predict the future exchange rate. These lagged features help the model capture temporal dependencies in the data.
+To improve the predictive power of the model, feature engineering is performed. This involves creating lagged versions of the exchange rate data, which serve as input features for the model. 
 
+Exchange rates from previous days (lags) are used to predict the future exchange rate. These lagged features help the model capture temporal dependencies in the data in time series forecasting. They were lagged upto a t-4 level. Then all the NA containing rows were removed too. 
 
 ```{r}
 # Loading and preprocessing data
@@ -106,12 +115,15 @@ head(lagged_data_normalized)
 
 # Train-Test Split
 
-The dataset is divided into training and testing sets. The training set is used to train the model, while the testing set is used to evaluate its performance. This split ensures that the model is evaluated on data it has not seen during training, providing an unbiased estimate of its performance. The training set consists of the initial portion of the data, while the testing set comprises the latter part.
+The dataset is divided into training and testing sets using an 80:20 split. The training set is used to train the model, while the testing set is used to evaluate its performance. 
+
+This split ensures that the model is evaluated on data it has not seen during training, so it can provide an unbiased performance
 
 # Multilayer Perceptron Model
 
-An MLP model is constructed using the neuralnet package in R. The model is designed with one hidden layer containing 12 neurons, and a logistic activation function is used. The model is trained to minimize the error in predicting the future exchange rate based on the lagged features. The training process involves optimizing the model weights through backpropagation.
+An MLP model is constructed using the `neuralnet` package in R. Several models were tested varying the inputs, activation functions, hidden layers and number of nodes in each. Then using the statistical measures given below the best model was identified as well as the model which has least parameters to be trained to make the model more efficient.
 
+The best model is designed with one hidden layer containing 12 neurons, and a logistic activation function is used. The model is trained to minimize the error in predicting the future exchange rate based on the lagged features. The training process involves optimizing the model weights through backpropagation.
 
 ```{r}
 # Train test split
@@ -151,8 +163,11 @@ plot(dataset_model1)
 
 # Predictions and Metrics
 
-The trained model is used to predict the exchange rates on the testing set. Various statistical indices are computed to evaluate the model's performance, including Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and Symmetric Mean Absolute Percentage Error (sMAPE). These metrics provide insights into the accuracy and reliability of the model's predictions.
+The trained model is used to predict the exchange rates on the testing set. 
 
+Various statistical indices are computed to evaluate the model's performance, including Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and Symmetric Mean Absolute Percentage Error (sMAPE). The model with the least errors was selected as the best model.
+
+These metrics provide insights into the accuracy and reliability of the model's predictions.
 
 ```{r}
 # Model predictions
@@ -183,7 +198,9 @@ cat("sMAPE:", smape_val, "\n")
 
 # Visualisation of results
 
-The results of the model's predictions are visualized to compare them with the actual exchange rates. Scatter plots and time series plots are created to illustrate the relationship between the predicted and actual values. These visualizations help identify patterns and discrepancies, aiding in the interpretation of the model's performance.
+The results of the model's predictions are visualized to compare them with the actual exchange rates. 
+
+Scatter plot and time series plot were created to show the relationship between the predicted and actual values. These visualizations help identify patterns in the interpretation of the model's performance.
 
 ```{r}
 # Model evaluation
