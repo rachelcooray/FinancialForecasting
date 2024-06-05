@@ -226,6 +226,27 @@ legend("topleft", legend = c("Desired Output", "Predicted Output"),
 
 In this project, a Multilayer Perceptron (MLP) model  was successfully developed to predict future EUR/USD exchange rates using historical data. The model's performance was evaluated using several statistical indices, and visualizations were created to compare the predicted and actual values.
 
+## Potential Impact
+
+The model holds value for financial analysts and investors, providing them with accurate predictions of exchange rates. This can help them in making informed decisions, optimizing strategies, and reducing risks associated with currency fluctuations.
+
+## Limitations
+
+1.	The model performance heavily depends on the quality and relevance of historical data used.
+
+2.	It assumes that historical patterns will continue to hold in the future, which may not always be the case.
+
+3.	External factors such as geopolitical events and economic policies, not considered in this model, can significantly impact exchange rates.
+
+## Future Work
+
+1.	Enhanced Feature Engineering
+Explore additional features such as technical indicators or sentiment analysis.
+
+2.	Real-Time Prediction
+Develop a pipeline for real-time prediction using streaming data.
+
+
 # References
 
 Chowdhury. M. S. et al. (2024). Deep Learning Models for Stock Market Forecasting: A Comprehensive Comparative Analysis. 10.32996/jbms.2024.6.2.9 
